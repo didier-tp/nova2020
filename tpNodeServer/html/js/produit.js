@@ -6,8 +6,24 @@ function onSelection(evt){
 }
 
 function recupererListeProduit(data){
-   console.log("data="+data);
-   //...
+   console.log("data="+data); //data est au format JSON
+   var tabProduits = JSON.parse(data);
+   for(let prod of tabProduits){
+      ajouterLigneDansTableau(prod);
+   }
+}
+
+function ajouterLigneDansTableau(prod){
+    
+    var bodyTableau = document.getElementById("bodyTableau");
+    var newRow = bodyTableau.insertRow(-1);
+    newRow.setAttribute("id","p_"+ prod.code);
+    var cellCode = newRow.insertCell(0);
+    cellCode.innerText=prod.code;
+    newRow.insertCell(1).innerText=prod.nom;
+    newRow.insertCell(2).innerText=prod.prix;
+
+    newRow.addEventListener("click",onSelection);
 }
 
 window.onload = function () {
@@ -16,15 +32,5 @@ window.onload = function () {
     makeAjaxGetRequest("../produit-api/public/produit" , recupererListeProduit);
 
 
-    var prodA = { code : 1 , nom : "cahier" , prix : 1.2 };
-
-    var bodyTableau = document.getElementById("bodyTableau");
-    var newRow = bodyTableau.insertRow(-1);
-    newRow.setAttribute("id","p_"+ prodA.code);
-    var cellCode = newRow.insertCell(0);
-    cellCode.innerText=prodA.code;
-    newRow.insertCell(1).innerText=prodA.nom;
-    newRow.insertCell(2).innerText=prodA.prix;
-
-    newRow.addEventListener("click",onSelection);
+   
 }
