@@ -12,3 +12,15 @@ function additionner(){
     var ulHistorique = document.getElementById('ulHistorique');
     ulHistorique.appendChild(li);
 }
+
+function montrerOuCacherHistorique(){
+    var ulHistorique = document.getElementById('ulHistorique');
+    var cbHisto = document.getElementById('cbHisto');//zone input type=checkbox
+    if(cbHisto.checked){
+        //ulHistorique.style.visibility = "visible"
+        ulHistorique.style.display = "block"
+    }else{
+        //ulHistorique.style.visibility = "hidden"
+        ulHistorique.style.display = "none"
+    }
+}
