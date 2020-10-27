@@ -7,4 +7,8 @@ function additionner(){
     var spanRes = document.getElementById('spanRes');//zone span
     spanRes.innerHTML="<b>"+res+"</b>";
     //spanRes.innerText=res;
+    var li= document.createElement("li");
+    li.innerText = "" + a + "+" + b + "=" + res;
+    var ulHistorique = document.getElementById('ulHistorique');
+    ulHistorique.appendChild(li);
 }
