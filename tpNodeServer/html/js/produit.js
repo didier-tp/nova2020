@@ -5,8 +5,16 @@ function onSelection(evt){
    console.log("id="+trParent.id);
 }
 
+function recupererListeProduit(data){
+   console.log("data="+data);
+   //...
+}
+
 window.onload = function () {
     console.log("code declenche des le chargement de la page dans le navigateur");
+
+    makeAjaxGetRequest("../produit-api/public/produit" , recupererListeProduit);
+
 
     var prodA = { code : 1 , nom : "cahier" , prix : 1.2 };
 
