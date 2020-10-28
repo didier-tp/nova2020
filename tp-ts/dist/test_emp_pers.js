@@ -1,0 +1,15 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var employe_1 = require("./employe");
+var personne_1 = require("./personne");
+var e1 = new employe_1.Employe('toto', "jean");
+e1.salaire = 2000;
+console.log(JSON.stringify(e1));
+var p1 = new personne_1.Personne();
+p1.age = 33;
+p1.nom = "Bon"; //p1.prenom="jean";
+var p1AsJsonString = JSON.stringify(p1);
+console.log(p1AsJsonString);
+var p2 = new personne_1.Personne("Therieur", "alain", 25);
+p2.incrementerAge();
+console.log(JSON.stringify(p2));
