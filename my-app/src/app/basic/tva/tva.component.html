@@ -1,5 +1,6 @@
 <p>tva works!</p>
-<label>ht:</label>  <input [(ngModel)]="ht" [class.positif]="ht>=0" [class.negatif]="ht<0"
+<label>ht:</label>  <input [(ngModel)]="ht" [class.positif]="ht>=0"
+                                            [class.negatif]="ht<0"
                       (input)="onCalculerTvaEtTtc()"/> <br/> <!-- [style.color]="ht>=0?'blue':'red'" -->
 <label>taux:</label> 
 <!-- <input [(ngModel)]="taux" /> -->
