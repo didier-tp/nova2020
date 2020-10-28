@@ -12,7 +12,7 @@ export class LoginComponent implements OnInit {
   message : string;
 
   onLogin(){
-    
+    this.message="donnees saisies=" + JSON.stringify(this.login);
   }
 
   constructor() { }
