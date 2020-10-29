@@ -17,16 +17,26 @@ export class ConversionComponent implements OnInit {
   listeDevises : Devise[];
 
   onConvertir(){
-     this.montantConverti = 
+        console.log("debut de onConvertir")
         this._deviseService.convertirDevise(this.montant,
                                             this.codeDeviseSource,
-                                            this.codeDeviseCible);
+                                            this.codeDeviseCible)
+                .subscribe(
+                   (res :number) => { this.montantConverti = res;
+                                      console.log("resultat obtenu en différé")} ,
+                   (err) => { console.log("error:"+err)}
+                );
+        console.log("suite de onConvertir")
   }
 
   constructor(private _deviseService : DeviseService) { }
 
   ngOnInit(): void {
-    this.listeDevises = this._deviseService.recupererDevises();
+    this._deviseService.recupererDevises()
+         .subscribe(
+           (tabDev : Devise[])=>{ this.listeDevises = tabDev},
+           (err) => { console.log("error:"+err)}
+         );
   }
 
 }

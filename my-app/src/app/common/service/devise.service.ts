@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
+import { delay } from 'rxjs/operators';
 import { Devise } from '../data/devise';
 
 @Injectable({
@@ -21,7 +22,10 @@ export class DeviseService {
   public convertirDevise(montant :number,
                         codeDeviseSource : string,
                         codeDeviseCible : string): Observable<number>{                       
-    return of(montant * 2); //pré-version (simulation grossière)
+    return of(montant * 2) //pré-version (simulation grossière)
+            .pipe(
+              delay(200) //simuler une attente de 200ms 
+            );
   }
 
   constructor() { }
