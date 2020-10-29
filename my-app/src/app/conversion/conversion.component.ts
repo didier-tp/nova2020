@@ -31,10 +31,16 @@ export class ConversionComponent implements OnInit {
 
   constructor(private _deviseService : DeviseService) { }
 
+  initListeDevises(tabDevises : Devise[]){
+    this.listeDevises = tabDevises;
+    this.codeDeviseSource = tabDevises[0].code;
+    this.codeDeviseCible = tabDevises[0].code;
+  }
+
   ngOnInit(): void {
     this._deviseService.recupererDevises()
          .subscribe(
-           (tabDev : Devise[])=>{ this.listeDevises = tabDev},
+           (tabDev : Devise[])=>{ this.initListeDevises(tabDev); },
            (err) => { console.log("error:"+err)}
          );
   }

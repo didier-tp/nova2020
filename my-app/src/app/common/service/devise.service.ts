@@ -1,13 +1,14 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { delay } from 'rxjs/operators';
+import { delay , map } from 'rxjs/operators';
 import { Devise } from '../data/devise';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DeviseService {
-
+ /*
   private _devises = [
      new Devise('EUR','Euro',1.0),
      new Devise('USD','Dollar',1.1),
@@ -29,4 +30,23 @@ export class DeviseService {
   }
 
   constructor() { }
+
+  */
+ public recupererDevises() : Observable< Devise[] > {
+  let urlWs = "http://localhost:8282/devise-api/public/devise";
+  return this.http.get<Devise[]>(urlWs);
+}
+
+public convertirDevise(montant :number,
+                      codeDeviseSource : string,
+                      codeDeviseCible : string): Observable<number>{                       
+    let urlWs = `http://localhost:8282/devise-api/public/convert`+
+                `?source=${codeDeviseSource}&target=${codeDeviseCible}&amount=${montant}`;
+    return this.http.get<object>(urlWs).pipe(
+         map( (resConv) => { return resConv['result']; })
+    );
+}
+
+constructor(private http: HttpClient) { }
+
 }
