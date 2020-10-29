@@ -13,13 +13,13 @@ export class DeviseService {
      new Devise('JPY','Yen',123.0)
   ];
 
-  public recupererDevise() : Devise[] {
+  public recupererDevises() : Devise[] {
     return this._devises;
   }
 
-  public convertirDevise(montant:number,
+  public convertirDevise(montant :number,
                         codeDeviseSource : string,
-                        codeDeviseCible : string):number{
+                        codeDeviseCible : string):number{                       
     return montant * 2; //pré-version (simulation grossière)
   }
 
