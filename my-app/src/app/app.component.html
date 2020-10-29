@@ -1,6 +1,11 @@
 <div class="container-fluid">
-    <app-header></app-header>
-    <h3>welcome {{title}}</h3>
+    <!--
+    <app-header ></app-header>
+    <app-header [titre]="'super-titre'"></app-header>
+    <app-header titre='super-titre'></app-header>
+    -->
+    <app-header [titre]="title"></app-header>
+   <!--  <h3>welcome {{title}}</h3> -->
     <app-basic></app-basic>
     <app-login></app-login>
     <app-footer></app-footer>
