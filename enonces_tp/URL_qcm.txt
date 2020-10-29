@@ -1,0 +1,7 @@
+http://www.d-defrance.fr/ngr/qcm
+----
+choisir "eval" 
+remplir "ScholaNova" , nom prenom , email
+---
+effectuer les 2 qcms : "angular" et "node_js" .
+---
