@@ -33,15 +33,21 @@ export class DeviseService {
 
   */
  public recupererDevises() : Observable< Devise[] > {
-  let urlWs = "http://localhost:8282/devise-api/public/devise";
+  //let urlWs = "http://localhost:8282/devise-api/public/devise";
+  let urlWs = "./devise-api/public/devise";
+  //url relative qui sera préfixé en mode dev par le contenu de proxy.conf.json
+  //via ng serve --proxy-config proxy.conf.json
   return this.http.get<Devise[]>(urlWs);
 }
 
 public convertirDevise(montant :number,
                       codeDeviseSource : string,
                       codeDeviseCible : string): Observable<number>{                       
-    let urlWs = `http://localhost:8282/devise-api/public/convert`+
+    //let urlWs = `http://localhost:8282/devise-api/public/convert`+
+    let urlWs = `./devise-api/public/convert`+
                 `?source=${codeDeviseSource}&target=${codeDeviseCible}&amount=${montant}`;
+      //url relative qui sera préfixé en mode dev par le contenu de proxy.conf.json
+     //via ng serve --proxy-config proxy.conf.json
     return this.http.get<object>(urlWs).pipe(
          map( (resConv) => { return resConv['result']; })
     );
